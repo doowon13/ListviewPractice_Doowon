@@ -2,11 +2,15 @@ package com.pluto.listviewpractice_doowon
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import com.pluto.listviewpractice_doowon.adapters.StudentAdapter
 import com.pluto.listviewpractice_doowon.datas.Students
+import kotlinx.android.synthetic.main.activity_main.*
 
 class MainActivity : AppCompatActivity() {
 
     val mStudentList = ArrayList<Students>()
+
+    lateinit var mAdapter : StudentAdapter
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -18,5 +22,10 @@ class MainActivity : AppCompatActivity() {
         mStudentList.add(Students("이기영", 1999))
         mStudentList.add(Students("신수진", 1998))
         mStudentList.add(Students("장영수", 1991))
+
+        mAdapter = StudentAdapter(this, R.layout.student_list_item, mStudentList)
+
+        studentListView.adapter = mAdapter
+
     }
 }
