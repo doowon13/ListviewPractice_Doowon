@@ -2,6 +2,7 @@ package com.pluto.listviewpractice_doowon
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.widget.Toast
 import com.pluto.listviewpractice_doowon.adapters.StudentAdapter
 import com.pluto.listviewpractice_doowon.datas.Students
 import kotlinx.android.synthetic.main.activity_main.*
@@ -27,5 +28,12 @@ class MainActivity : AppCompatActivity() {
 
         studentListView.adapter = mAdapter
 
+        
+        studentListView.setOnItemClickListener { parent, view, position, id ->
+            val clickedStudent = mStudentList[position]
+
+            Toast.makeText(this, "${clickedStudent.name}이 클릭 됨", Toast.LENGTH_SHORT).show()
+
+        }
     }
 }
